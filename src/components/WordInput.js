@@ -1,6 +1,5 @@
 
 import React from 'react'
-import {StyleSheet, TextInput} from 'react-native';
 
 function onWordSubmit(hangmanWord) {
     console.log(hangmanWord);
@@ -11,26 +10,15 @@ const WordInput = () => {
 
     return (
         <div>
-            <TextInput
-                style={styles.input}
-                onChangeText={setHangmanWord}
-                value={hangmanWord}
-            />
-            <button className="receiveWord" onClick={onWordSubmit(hangmanWord)}>Submit</button>
-
+            <form onSubmit={onWordSubmit(hangmanWord)}>        <label>
+                    Word:
+                <input type="text" value={hangmanWord} onChange={setHangmanWord}/>        </label>
+                <input type="submit" value="Submit" />
+            </form>
         </div>
         
     );
 
 };
 
-
-const styles = StyleSheet.create({
-    input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-    },
-})
 export default WordInput;
